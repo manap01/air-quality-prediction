@@ -20,6 +20,55 @@ from src.models.train_model import ModelTrainer
 from src.models.predict_model import ModelPredictor
 from src.visualization.visualize import Visualizer
 
+def generate_report(metrics, model_name, report_path='reports/laporan_proyek.md'):
+    """
+    Generate laporan proyek dalam format markdown
+    
+    Args:
+        metrics (dict): Dictionary berisi metrik evaluasi
+        model_name (str): Nama model yang digunakan
+        report_path (str): Path untuk menyimpan laporan
+    """
+    # Pastikan folder reports ada
+    os.makedirs(os.path.dirname(report_path), exist_ok=True)
+    
+    # Konten laporan
+    report_content = f"""
+# Laporan Proyek Prediksi Kualitas Udara
+
+## Hasil Evaluasi Model
+
+**Model yang digunakan**: {model_name}
+
+**Metrik Evaluasi**:
+- MAE (Mean Absolute Error): {metrics['mae']:.4f}
+- RMSE (Root Mean Squared Error): {metrics['rmse']:.4f}
+- R² (R-Squared): {metrics['r2']:.4f}
+
+## Visualisasi Kinerja Model
+
+### 1. Actual vs Predicted
+![Actual vs Predicted](figures/{model_name}_actual_vs_predicted.png)
+
+### 2. Feature Importance
+![Feature Importance](figures/{model_name}_feature_importance.png)
+
+### 3. Residual Analysis
+![Residuals](figures/{model_name}_residuals.png)
+
+## Interpretasi Hasil
+Model {model_name} menunjukkan kinerja sebagai berikut:
+- **MAE**: Rata-rata kesalahan absolut prediksi adalah {metrics['mae']:.2f} poin AQI
+- **RMSE**: Kesalahan prediksi standar adalah {metrics['rmse']:.2f} poin AQI
+- **R²**: Model menjelaskan {metrics['r2']*100:.1f}% variasi dalam data
+"""
+
+    # Simpan ke file
+    with open(report_path, 'w') as f:
+        f.write(report_content)
+    
+    print(f"✅ Laporan proyek disimpan di: {report_path}")
+
 def main():
     parser = argparse.ArgumentParser(description='Air Quality Prediction Pipeline')
     parser.add_argument('--mode', choices=['train', 'predict', 'evaluate'], 
@@ -38,7 +87,7 @@ def main():
     os.makedirs('data/processed', exist_ok=True)
     os.makedirs('models/trained_models', exist_ok=True)
     os.makedirs('models/model_artifacts', exist_ok=True)
-    os.makedirs('reports/figures', exist_ok=True)  # Pastikan folder untuk gambar ada
+    os.makedirs('reports/figures', exist_ok=True)
     
     print("🌬️ Air Quality Prediction Pipeline")
     print("=" * 50)
@@ -70,14 +119,12 @@ def main():
         # Train model
         print(f"🤖 Training {args.model_name} model...")
         trainer = ModelTrainer()
-        # Panggil train_model dengan return_test_data=True
         result = trainer.train_model(
             engineered_data, 
             args.model_name,
             return_test_data=True
         )
         
-        # Handle return value: jika return_test_data=True, maka result akan memiliki 3 elemen
         if len(result) == 3:
             model, metrics, (X_test, y_test, y_pred) = result
         else:
@@ -93,11 +140,11 @@ def main():
         joblib.dump(model, model_path)
         print(f"💾 Model saved to {model_path}")
         
-        # Visualize results jika ada data test
+        # Visualize results
         if X_test is not None and y_test is not None and y_pred is not None:
             visualizer = Visualizer()
             
-            # Plot feature importance (jika model memiliki)
+            # Plot feature importance
             if hasattr(model, 'feature_importances_'):
                 visualizer.plot_feature_importance_from_model(
                     model=model,
@@ -123,6 +170,10 @@ def main():
             )
             
             print(f"📊 Visualizations saved to reports/figures")
+        
+        # Generate project report
+        print("📝 Generating project report...")
+        generate_report(metrics, args.model_name)
         
     elif args.mode == 'predict':
         print("🔮 Making predictions...")
