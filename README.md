@@ -239,7 +239,7 @@ Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
 ## 👨‍💻 Author & Contact  
 **Hanif Maulana Arrasyid**  
-- GitHub: [@username](https://github.com/username)  
+- GitHub: [@username]((https://github.com/manap01))  
 - Email: hanifmaulanaarrasyid@gmail.com  
 - LinkedIn: [Profil LinkedIn](https://linkedin.com/in/hanif-arrasyid)  
 
