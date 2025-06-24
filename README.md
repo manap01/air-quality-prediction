@@ -96,14 +96,15 @@ air-quality-prediction/
 *Catatan: Hasil aktual mungkin bervariasi tergantung dataset*
 
 ## 📈 Hasil Visualisasi  
+Lihat selengkapnya di [laporan_proyek.md](https://github.com/manap01/air-quality-prediction/blob/main/reports/laporan_proyek.md)
 
-Proyek ini menghasilkan berbagai visualisasi analitis setelah menjalankan `python main.py`:  
+Setelah menjalankan `python main.py`, berikut adalah visualisasi utama yang dihasilkan:
 
-| Analisis | Visualisasi | Deskripsi |  
-|----------|-------------|-----------|  
-| **Feature Importance** | <img src="reports/figures/random_forest_feature_importance.png" width="200"> | Faktor yang paling mempengaruhi AQI |  
-| **Actual vs Predicted** | <img src="reports/figures/random_forest_actual_vs_predicted.png" width="200"> | Perbandingan nilai aktual dan prediksi |  
-| **Residual Analysis** | <img src="reports/figures/random_forest_residuals.png" width="200"> | Analisis kesalahan prediksi |  
+| Analisis               | Visualisasi                                                                 | Deskripsi                                 |
+|------------------------|------------------------------------------------------------------------------|-------------------------------------------|
+| **Feature Importance** | <img src="reports/figures/random_forest_feature_importance.png" width="300"> | Faktor paling berpengaruh terhadap AQI    |
+| **Actual vs Predicted**| <img src="reports/figures/random_forest_actual_vs_predicted.png" width="300">| Perbandingan nilai aktual vs prediksi     |
+| **Residual Analysis**  | <img src="reports/figures/random_forest_residuals.png" width="300">          | Pola kesalahan prediksi (residual)        |
 
 ## 🛠️ Teknologi yang Digunakan  
 - **Python 3.10+**  
