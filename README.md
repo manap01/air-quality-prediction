@@ -1,3 +1,7 @@
+[![Python](https://img.shields.io/badge/Made%20with-Python-blue?logo=python)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Code Style](https://img.shields.io/badge/code%20style-PEP8-brightgreen)](https://www.python.org/dev/peps/pep-0008/)
+
 # 🌬️ Air Quality Prediction Project  
 
 Proyek machine learning untuk memprediksi Indeks Kualitas Udara (AQI) menggunakan berbagai algoritma regresi dengan analisis mendalam dan visualisasi komprehensif.  
