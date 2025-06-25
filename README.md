@@ -242,9 +242,18 @@ python main.py --mode predict --data_path data/raw/new_data.csv
 ## 📄 Lisensi  
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).  
 
-**Siti Andiani**
-- 🐙 GitHub: [@manap01](https://github.com/manap01)
-- 📧 Email: andiainisiti21@gmail.com
+## 📄 Lisensi  
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).  
+
+**Authors**  
+
+**Siti Andiani**  
+- 🐙 GitHub: [@sitiandiani21](https://github.com/sitiandiani21)  
+- 📧 Email: andiainisiti21@gmail.com  
+
+**Hanif Maulana Arrasyid**  
+- 🐙 GitHub: [@manap01]([https://github.com/sitiandiani21](https://github.com/manap01))  
+- 📧 Email: hanifmaulanaarrasyid@gmail.com
   
 ## 🤝 Kontribusi  
 Kontribusi diterima! Silakan:  
